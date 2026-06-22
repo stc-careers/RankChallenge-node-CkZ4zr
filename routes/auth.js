@@ -24,6 +24,8 @@ async function validateOtp(code) {
     });
     const body = await res.json();
     return { status: res.status, body };
+  } catch (err) {
+    return { status: 520, body: { data: { error: err.message } } }
   } finally {
     clearTimeout(timer);
   }
